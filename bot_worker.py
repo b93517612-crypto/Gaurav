@@ -12,7 +12,7 @@ DOWNLOAD_DIR = Path("downloads")
 DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; downloader/1.0)"}
-URL_RE = re.compile(r"https?://[^\s)'"]+", re.IGNORECASE)
+URL_RE = re.compile(r"https?://[^\s)'\"]+", re.IGNORECASE)
 
 def extract_urls_from_file(path):
     p = Path(path)
