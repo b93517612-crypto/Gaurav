@@ -4,7 +4,7 @@ from urllib.parse import urlsplit
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
-SOURCE_TXT = input("Enter path of your .txt file: ").strip()
+SOURCE_TXT = os.environ.get("SOURCE_TXT", "RAS Foundation Nirmal Batch 1_0 _Recorded From Studio_.txt")
 
 DOWNLOAD_DIR = Path("downloads")
 DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
@@ -19,7 +19,7 @@ def extract_urls_from_file(path):
         return []
     txt = p.read_text(encoding="utf-8", errors="ignore")
     urls = URL_RE.findall(txt)
-    print(f"✅ Found {len(urls)} URLs")
+    print(f"✅ Found {len(urls)} URLs in {p.name}")
     return urls
 
 def safe_filename_from_url(url):
